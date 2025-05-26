@@ -5,9 +5,9 @@ using PrisonersDilemma.Core.Models; // SimulationStatus and SimulationStepResult
 
 namespace PrisonersDilemma.Core.Services
 {
-    public class SimulationService
+    public class SimulationService : ISimulationService
     {
-        private List<Box> _boxes;
+        private List<Box> _boxes = new List<Box>(); // Initialized
         private Random _random = new Random();
         private int _numberOfPrisoners;
         private int _maxAttempts;
@@ -15,7 +15,7 @@ namespace PrisonersDilemma.Core.Services
         private int _attemptsMadeByCurrentPrisoner;
         private int _lastOpenedBoxNumberValue; // Renamed to avoid conflict with a potential property
         private bool _currentPrisonerFoundHisNumber;
-        private List<int> _prisonersWhoFoundTheirNumber;
+        private List<int> _prisonersWhoFoundTheirNumber = new List<int>(); // Initialized
 
 
         public void InitializeSimulation(int numberOfPrisoners, int maxAttemptsPerPrisoner)
@@ -147,8 +147,8 @@ namespace PrisonersDilemma.Core.Services
                 return new SimulationStepResult { Status = SimulationStatus.Failed, PrisonerNumber = _currentPrisonerNumber, AttemptsMade = _attemptsMadeByCurrentPrisoner };
             }
 
-            _lastOpenedBoxNumberValue = openedBox.PrisonerNumberInside; // Store for next step
-            bool foundNumberInThisBox = openedBox.PrisonerNumberInside == _currentPrisonerNumber;
+            _lastOpenedBoxNumberValue = openedBox!.PrisonerNumberInside; // Store for next step, asserted non-null
+            bool foundNumberInThisBox = openedBox!.PrisonerNumberInside == _currentPrisonerNumber; // asserted non-null
 
             if (foundNumberInThisBox)
             {
@@ -165,8 +165,8 @@ namespace PrisonersDilemma.Core.Services
                     { 
                         Status = SimulationStatus.AllPrisonersSucceeded, // Changed from FoundNumber
                         PrisonerNumber = _currentPrisonerNumber, 
-                        BoxNumberOpened = openedBox.BoxNumber, 
-                        ValueInBox = openedBox.PrisonerNumberInside, 
+                        BoxNumberOpened = openedBox!.BoxNumber, // asserted non-null
+                        ValueInBox = openedBox!.PrisonerNumberInside, // asserted non-null
                         AttemptsMade = _attemptsMadeByCurrentPrisoner, 
                         FoundNumberInBox = true 
                     };
@@ -176,8 +176,8 @@ namespace PrisonersDilemma.Core.Services
                 { 
                     Status = SimulationStatus.FoundNumber, 
                     PrisonerNumber = _currentPrisonerNumber, 
-                    BoxNumberOpened = openedBox.BoxNumber, 
-                    ValueInBox = openedBox.PrisonerNumberInside, 
+                    BoxNumberOpened = openedBox!.BoxNumber,  // asserted non-null
+                    ValueInBox = openedBox!.PrisonerNumberInside, // asserted non-null
                     AttemptsMade = _attemptsMadeByCurrentPrisoner, 
                     FoundNumberInBox = true 
                 };
@@ -191,8 +191,8 @@ namespace PrisonersDilemma.Core.Services
                     { 
                         Status = SimulationStatus.Failed, 
                         PrisonerNumber = _currentPrisonerNumber, 
-                        BoxNumberOpened = openedBox.BoxNumber, 
-                        ValueInBox = openedBox.PrisonerNumberInside, 
+                        BoxNumberOpened = openedBox!.BoxNumber, // asserted non-null
+                        ValueInBox = openedBox!.PrisonerNumberInside, // asserted non-null
                         AttemptsMade = _attemptsMadeByCurrentPrisoner, 
                         FoundNumberInBox = false 
                     };
@@ -202,18 +202,20 @@ namespace PrisonersDilemma.Core.Services
                 { 
                     Status = SimulationStatus.Searching, 
                     PrisonerNumber = _currentPrisonerNumber, 
-                    BoxNumberOpened = openedBox.BoxNumber, 
-                    ValueInBox = openedBox.PrisonerNumberInside, 
+                    BoxNumberOpened = openedBox!.BoxNumber, // asserted non-null
+                    ValueInBox = openedBox!.PrisonerNumberInside, // asserted non-null
                     AttemptsMade = _attemptsMadeByCurrentPrisoner, 
                     FoundNumberInBox = false 
                 };
             }
         }
 
-        public IReadOnlyList<Box> GetBoxes()
+        public IReadOnlyList<IBox> GetBoxes() // Тип изменен на IReadOnlyList<IBox>
         {
-            // Return a read-only copy to prevent external modification
-            return _boxes?.AsReadOnly(); 
+            // Это должно работать благодаря ковариантности.
+            // ReadOnlyCollection<Box> (возвращаемый AsReadOnly()) реализует IReadOnlyList<Box>,
+            // и IReadOnlyList<Box> ковариантен к IReadOnlyList<IBox>.
+            return _boxes.AsReadOnly(); // Removed ?. as _boxes is now initialized
         }
 
         // Method for testing purposes

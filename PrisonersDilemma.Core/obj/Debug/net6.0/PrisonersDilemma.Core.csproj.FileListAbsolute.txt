@@ -1,0 +1,12 @@
+/app/PrisonersDilemma.Core/bin/Debug/net6.0/PrisonersDilemma.Core.deps.json
+/app/PrisonersDilemma.Core/bin/Debug/net6.0/PrisonersDilemma.Core.dll
+/app/PrisonersDilemma.Core/bin/Debug/net6.0/PrisonersDilemma.Core.pdb
+/app/PrisonersDilemma.Core/obj/Debug/net6.0/PrisonersDilemma.Core.GeneratedMSBuildEditorConfig.editorconfig
+/app/PrisonersDilemma.Core/obj/Debug/net6.0/PrisonersDilemma.Core.AssemblyInfoInputs.cache
+/app/PrisonersDilemma.Core/obj/Debug/net6.0/PrisonersDilemma.Core.AssemblyInfo.cs
+/app/PrisonersDilemma.Core/obj/Debug/net6.0/PrisonersDilemma.Core.csproj.CoreCompileInputs.cache
+/app/PrisonersDilemma.Core/obj/Debug/net6.0/PrisonersDilemma.Core.sourcelink.json
+/app/PrisonersDilemma.Core/obj/Debug/net6.0/PrisonersDilemma.Core.dll
+/app/PrisonersDilemma.Core/obj/Debug/net6.0/refint/PrisonersDilemma.Core.dll
+/app/PrisonersDilemma.Core/obj/Debug/net6.0/PrisonersDilemma.Core.pdb
+/app/PrisonersDilemma.Core/obj/Debug/net6.0/ref/PrisonersDilemma.Core.dll

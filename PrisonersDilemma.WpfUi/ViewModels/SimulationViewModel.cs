@@ -13,7 +13,7 @@ namespace PrisonersDilemma.WpfUi.ViewModels
 {
     public class SimulationViewModel : BindableBase, INavigationAware
     {
-        private readonly SimulationService _simulationService;
+        private readonly ISimulationService _simulationService; // Changed to ISimulationService
         private readonly IRegionManager _regionManager;
 
         private int _numberOfPrisoners;
@@ -86,7 +86,7 @@ namespace PrisonersDilemma.WpfUi.ViewModels
         public DelegateCommand ToggleAutoModeCommand { get; private set; }
 
 
-        public SimulationViewModel(SimulationService simulationService, IRegionManager regionManager)
+        public SimulationViewModel(ISimulationService simulationService, IRegionManager regionManager) // Changed to ISimulationService
         {
             _simulationService = simulationService;
             _regionManager = regionManager;

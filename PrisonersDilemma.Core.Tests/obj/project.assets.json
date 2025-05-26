@@ -393,6 +393,16 @@
             "related": ".xml"
           }
         }
+      },
+      "PrisonersDilemma.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/PrisonersDilemma.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PrisonersDilemma.Core.dll": {}
+        }
       }
     }
   },
@@ -1058,6 +1068,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "PrisonersDilemma.Core/1.0.0": {
+      "type": "project",
+      "path": "../PrisonersDilemma.Core/PrisonersDilemma.Core.csproj",
+      "msbuildProject": "../PrisonersDilemma.Core/PrisonersDilemma.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1065,6 +1080,7 @@
       "MSTest.TestAdapter >= 3.0.4",
       "MSTest.TestFramework >= 3.0.4",
       "Microsoft.NET.Test.Sdk >= 17.6.0",
+      "PrisonersDilemma.Core >= 1.0.0",
       "coverlet.collector >= 6.0.0"
     ]
   },
@@ -1092,7 +1108,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/app/PrisonersDilemma.Core/PrisonersDilemma.Core.csproj": {
+              "projectPath": "/app/PrisonersDilemma.Core/PrisonersDilemma.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

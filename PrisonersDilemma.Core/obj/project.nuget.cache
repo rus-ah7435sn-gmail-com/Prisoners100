@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "0K4bpWkkx/hSitULGGnkTdjbbfZGbFhtTkhaKonJXC9uZ+rQyyDffwdVvYoqxvrpv068hLoFJco0hJtkfisx5Q==",
+  "dgSpecHash": "fLXBWU7dzvtO5d/CvzUMalqJxhfyNTv4aaZ3BSSaDbkFWlGcyBhu7rp0paciCkLGu5wk63YYUmBcXfrcuRO4yA==",
   "success": true,
   "projectFilePath": "/app/PrisonersDilemma.Core/PrisonersDilemma.Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/jules/.nuget/packages/microsoft.netcore.app.ref/6.0.36/microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "/home/jules/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.36/microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512"
+  ],
   "logs": []
 }

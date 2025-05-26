@@ -20,7 +20,7 @@ namespace PrisonersDilemma.WpfUi
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             // Register Services
-            containerRegistry.RegisterSingleton<SimulationService>();
+            containerRegistry.RegisterSingleton<ISimulationService, SimulationService>();
 
             // Register Views for Navigation
             // Make sure the view model names match exactly if you rely on naming conventions
